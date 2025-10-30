@@ -2,7 +2,7 @@
 
 **AI-Powered Medical Image Analysis using Deep Learning + Gradio Web Interface**
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1-TQYeu_1T0n2C52O7xj-zQ_Tu4fRoTe4?usp=sharing)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![TensorFlow 2.8+](https://img.shields.io/badge/TensorFlow-2.8+-orange.svg)](https://tensorflow.org)
 [![Gradio](https://img.shields.io/badge/Gradio-3.0+-green.svg)](https://gradio.app)
