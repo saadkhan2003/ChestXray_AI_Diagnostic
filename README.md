@@ -177,151 +177,325 @@ The models use the DenseNet-121 architecture pre-trained on ImageNet, which prov
 
 ---
 
-## 📊 Datasets Used
+## 📊 Datasets
 
-### 1. Pneumonia Detection
-- **Source**: [Chest X-ray Images (Pneumonia) on Kaggle](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia)
+### Training Data Sources
+
+The models in this project are trained on publicly available medical imaging datasets:
+
+#### 1. Pneumonia Detection Dataset
+- **Source**: [Chest X-ray Images (Pneumonia)](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia) on Kaggle
 - **Classes**: Normal, Pneumonia
-- **Size**: ~5,863 images
+- **Total Images**: ~5,863 X-ray images
+- **Structure**: Organized into train/validation/test splits with separate folders for each class
 
-### 2. COVID-19 Detection
-- **Source**: [COVID-19 Radiography Database on Kaggle](https://www.kaggle.com/datasets/tawsifurrahman/covid19-radiography-database)
+#### 2. COVID-19 Detection Dataset
+- **Source**: [COVID-19 Radiography Database](https://www.kaggle.com/datasets/tawsifurrahman/covid19-radiography-database) on Kaggle
 - **Classes**: Normal, COVID-19
-- **Size**: ~21,165 images
+- **Total Images**: ~21,165 X-ray images
+- **Structure**: Organized dataset with Normal and COVID-19 categories
+
+### Dataset Organization
+
+To train your own models, download the datasets and organize them as described in `datasets/README.md`:
+
+```
+datasets/
+├── pneumonia/
+│   └── chest_xray/
+│       ├── train/
+│       │   ├── NORMAL/
+│       │   └── PNEUMONIA/
+│       ├── val/
+│       └── test/
+│
+└── covid_organized/
+    ├── train/
+    │   ├── Normal/
+    │   └── COVID/
+    ├── val/
+    └── test/
+```
 
 ---
 
 ## 💻 Technical Stack
 
 ### Core Technologies
-- **TensorFlow/Keras** - Deep learning framework
-- **DenseNet-121** - Pre-trained CNN model
-- **Gradio** - Web interface library
-- **Google Colab** - Free cloud GPU platform
 
-### Key Libraries
-```
+| Technology | Purpose | Version |
+|------------|---------|---------|
+| **TensorFlow/Keras** | Deep learning framework | 2.8.0+ |
+| **DenseNet-121** | Pre-trained CNN architecture | ImageNet weights |
+| **Gradio** | Web interface framework | 3.0+ |
+| **Google Colab** | Cloud deployment platform | Latest |
+| **Python** | Programming language | 3.8+ |
+
+### Python Dependencies
+
+The complete list of dependencies is in `requirements.txt`:
+
+```python
+# Core ML/DL
 tensorflow>=2.8.0
+keras>=2.8.0
+
+# Web Interface
 gradio>=3.0.0
-numpy
-pandas
-matplotlib
-opencv-python-headless
-pillow
-scikit-learn
-seaborn
+
+# Image Processing
+opencv-python-headless>=4.5.0
+Pillow>=9.0.0
+
+# Data Science
+numpy>=1.21.0
+pandas>=1.3.0
+matplotlib>=3.4.0
+seaborn>=0.11.0
+
+# ML Utilities
+scikit-learn>=1.0.0
+```
+
+### System Requirements
+
+**For Deployment (Google Colab)**:
+- Google account
+- Web browser
+- Internet connection
+- Recommended: GPU runtime for faster predictions
+
+**For Local Development**:
+- Python 3.8 or higher
+- 8GB+ RAM recommended
+- CUDA-compatible GPU (optional, for training)
+
+---
+
+## 🔧 How It Works
+
+### Workflow Overview
+
+```
+1. User uploads chest X-ray image via Gradio interface
+                    ↓
+2. Image preprocessing (resize to 224×224, normalize)
+                    ↓
+3. Prediction with Pneumonia model
+                    ↓
+4. Prediction with COVID-19 model
+                    ↓
+5. Confidence score calculation
+                    ↓
+6. Results display with visualization
+```
+
+### Prediction Logic
+
+The system uses a dual-model approach:
+
+1. **Image Upload**: User uploads a chest X-ray image through the web interface
+2. **Preprocessing**: Image is converted to RGB, resized to 224×224, and normalized
+3. **Dual Prediction**: 
+   - Pneumonia model predicts: Normal vs Pneumonia
+   - COVID-19 model predicts: Normal vs COVID-19
+4. **Confidence Analysis**: Calculates probability scores for each condition
+5. **Result Interpretation**:
+   - High confidence (>70%): Clear positive detection
+   - Medium confidence (50-70%): Possible abnormality
+   - Low confidence (<50%): Likely normal
+6. **Visualization**: Displays results with color-coded bar charts
+
+### Key Functions in Notebook
+
+```python
+preprocess_image(image)      # Prepares image for model input
+predict_disease(image)       # Main prediction function
+demo.launch(share=True)      # Launches Gradio interface with public URL
 ```
 
 ---
 
-## 🎓 For FYP/Academic Projects
+## 🎓 For Academic & Educational Use
 
-### What to Include in Report
-1. ✅ **System Architecture** - DenseNet-121, Gradio, Colab
-2. ✅ **Deployment Process** - Screenshots and steps
-3. ✅ **Results** - Predictions with confidence scores
-4. ✅ **Accessibility** - Public URL demonstration
-5. ✅ **Testing** - Multiple X-ray examples
+### Ideal For
 
-### Demo Preparation Checklist
-- [ ] Practice 5-minute demo
-- [ ] Prepare 3-5 test X-ray images
-- [ ] Have public URL ready and tested
-- [ ] Take backup screenshots
-- [ ] Include medical disclaimer
-- [ ] Prepare answers for technical questions
+- 🎓 **Final Year Projects (FYP)** - Complete AI/ML project demonstration
+- 📚 **Research Projects** - Medical image analysis research
+- 👨‍🏫 **Educational Demonstrations** - Teaching AI in healthcare
+- 💼 **Portfolio Projects** - Showcasing ML engineering skills
 
-### Presentation Flow
-1. Introduce the problem (chest X-ray diseases)
-2. Explain the solution (AI detection system)
-3. Show the Colab notebook structure
-4. Explain transfer learning approach
-5. Demo the live Gradio app
-6. Upload different X-ray types
-7. Explain confidence scores and predictions
-8. Discuss accessibility via public URL
+### What Makes This Project Stand Out
 
----
+1. ✅ **End-to-End Solution** - From model to deployment
+2. ✅ **Modern Technology Stack** - TensorFlow, Gradio, Cloud deployment
+3. ✅ **Real-world Application** - Healthcare AI use case
+4. ✅ **Accessible Interface** - No technical knowledge required for end users
+5. ✅ **Cloud Deployment** - Free, scalable, and shareable
 
-## ⚠️ Medical Disclaimer
+### Presentation Tips
 
-**IMPORTANT**: This project is for **educational and research purposes ONLY**. 
+**For Project Demonstration**:
+1. Start with the problem statement (medical imaging challenges)
+2. Explain the AI solution (transfer learning with DenseNet-121)
+3. Show the Jupyter notebook structure and code
+4. Demonstrate live predictions using the Gradio interface
+5. Discuss results, confidence scores, and model performance
+6. Highlight the accessibility via public URL
+7. Mention limitations and future improvements
 
-- ❌ NOT intended for clinical use
-- ❌ NOT a medical diagnostic tool
-- ❌ NOT a replacement for professional medical advice
-- ✅ Educational demonstration of ML concepts
-- ✅ Research and learning purposes
-
-**Always consult qualified healthcare professionals for medical diagnosis.**
+**Demo Checklist**:
+- [ ] Have 3-5 test X-ray images ready (various conditions)
+- [ ] Ensure Colab notebook is running with public URL active
+- [ ] Prepare backup screenshots in case of connectivity issues
+- [ ] Know your model accuracy/performance metrics
+- [ ] Be ready to explain transfer learning concept
+- [ ] Prepare to discuss medical disclaimer and limitations
 
 ---
 
-## 🐛 Troubleshooting
+## ⚠️ Important Disclaimers
+
+### Medical Disclaimer
+
+**🚨 CRITICAL: This project is for EDUCATIONAL and RESEARCH purposes ONLY.**
+
+- ❌ **NOT** a medical diagnostic tool
+- ❌ **NOT** intended for clinical use
+- ❌ **NOT** a replacement for professional medical advice
+- ❌ **NOT** validated for actual patient diagnosis
+- ✅ Educational demonstration of machine learning concepts
+- ✅ Research and learning tool for AI/ML students
+- ✅ Portfolio project for software engineering
+
+**⚕️ Always consult qualified healthcare professionals for medical diagnosis and treatment.**
+
+### Ethical Considerations
+
+- This tool is a proof-of-concept for educational purposes
+- Real medical AI systems require rigorous validation and regulatory approval
+- Healthcare professionals should always be involved in patient diagnosis
+- AI should assist, not replace, medical expertise
+
+---
+
+## 🐛 Troubleshooting Guide
 
 ### Common Issues & Solutions
 
-**Q: Models not loading?**
-- Check file names match exactly: `pneumonia_model_best.h5` and `covid_model_best.h5`
-- Ensure files are uploaded to `/content/models/` folder
-- Try re-uploading the files
-- Verify file sizes (should be ~80-100MB each)
+#### Model Loading Issues
 
-**Q: Public URL not working?**
-- Keep Colab tab/window open
-- Don't stop the launch cell execution
-- Re-run the launch cell if link expires
-- Check internet connection
+**Problem**: Error loading models
+```
+Solution:
+1. Verify model file names match exactly:
+   - pneumonia_model_best.h5
+   - covid_model_best.h5
+2. Check the PROJECT_DIR path in the notebook points to correct location
+3. Ensure models are in Google Drive in the specified folder
+4. Verify file sizes (should be ~80-100MB each)
+5. Try re-uploading model files to Google Drive
+```
 
-**Q: Predictions are slow?**
-- Enable GPU in Colab (Runtime → Change runtime type → GPU)
-- Restart runtime if needed
-- Ensure images are reasonable size (<5MB)
+#### Google Drive Mounting Issues
 
-**Q: "Out of memory" error?**
-- Runtime → Restart runtime
-- Re-run all cells from beginning
-- Upload one image at a time
+**Problem**: Drive mount fails or shows wrong directory
+```
+Solution:
+1. Run the drive mount cell again
+2. Grant permissions when prompted
+3. Update PROJECT_DIR variable to match your Drive structure
+4. Verify path with: !ls /content/drive/MyDrive/
+```
 
-**For detailed help:** Check the troubleshooting sections in documentation files in `docs/` folder
+#### Gradio Public URL Issues
+
+**Problem**: Public URL not working or expired
+```
+Solution:
+1. Keep the Colab tab/window open
+2. Don't interrupt the cell execution
+3. Re-run the launch cell if link expires
+4. Check internet connection
+5. Try demo.launch(share=True) again
+```
+
+#### Performance Issues
+
+**Problem**: Slow predictions or timeout errors
+```
+Solution:
+1. Enable GPU runtime:
+   Runtime → Change runtime type → GPU → Save
+2. Restart runtime: Runtime → Restart runtime
+3. Reduce image size (<5MB recommended)
+4. Upload one image at a time
+```
+
+#### Memory Errors
+
+**Problem**: "Out of memory" error in Colab
+```
+Solution:
+1. Runtime → Restart runtime
+2. Clear output: Edit → Clear all outputs
+3. Run cells sequentially (not all at once)
+4. Ensure GPU is enabled
+5. Close other Colab notebooks
+```
+
+#### Import Errors
+
+**Problem**: Module not found errors
+```
+Solution:
+1. Re-run the package installation cell
+2. Restart runtime if needed
+3. Verify internet connectivity in Colab
+4. Check requirements.txt for correct versions
+```
 
 ---
 
-## 📦 Repository Contents
+## 📦 Repository Structure Details
 
-### Essential Files
-- ✅ `notebooks/03_complete_colab_training_and_app.ipynb` - Main Colab notebook
-- ✅ `requirements.txt` - Python dependencies for Colab
-- ✅ `README.md` - This file
-- ✅ `.gitignore` - Git ignore rules
+### Core Files
 
-### Documentation (`docs/` folder)
-- ✅ Complete deployment guides
-- ✅ Quick start references
-- ✅ Visual workflow diagrams
-- ✅ Troubleshooting tips and FAQs
+| File/Folder | Description | Size |
+|------------|-------------|------|
+| `notebooks/XRAY_Detection.ipynb` | Main deployment notebook | ~50KB |
+| `requirements.txt` | Python dependencies | ~1KB |
+| `README.md` | Documentation (this file) | ~15KB |
+| `.gitignore` | Git ignore rules | ~1KB |
+| `models/` | Trained model storage | Models not in repo |
+| `datasets/` | Dataset information | READMEs only |
 
-### Models Folder
-- Place your trained `.h5` model files here (not pushed to GitHub due to size)
-- `pneumonia_model_best.h5`
-- `covid_model_best.h5`
+### What's Included
 
----
+✅ **In Repository**:
+- Complete Jupyter notebook with Gradio app
+- Requirements and dependency specifications
+- Comprehensive documentation
+- Dataset download instructions
+- Model storage structure
 
-## 🚀 Deployment Options
+❌ **Not in Repository** (due to size):
+- Trained model files (.h5) - ~80-100MB each
+- Training datasets - Several GB
+- Training history and logs
 
-### Option 1: Quick Deploy (Recommended)
-**Use pre-trained models**
-- Upload your `.h5` models to Colab
-- Run the notebook
-- Get public URL in 5 minutes
+### Model File Management
 
-### Option 2: Full Pipeline
-**Train and deploy**
-- Use the training sections in notebook
-- Train on Colab GPU (~5-6 hours)
-- Automatically deploy after training
-- Get public URL
+Models are **gitignored** because:
+- Large file size (~80-100MB each)
+- GitHub has 100MB file size limit
+- Better stored in Google Drive for Colab access
+
+**To use models**:
+1. Train models or obtain pre-trained .h5 files
+2. Upload to Google Drive
+3. Update `PROJECT_DIR` in notebook
+4. Models load directly from Drive
 
 ---
 
