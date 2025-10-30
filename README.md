@@ -499,15 +499,6 @@ Models are **gitignored** because:
 
 ---
 
-## 🤝 Contributing
-
-This is an educational FYP (Final Year Project). Contributions welcome:
-- 🐛 Report bugs or issues
-- 💡 Suggest new features or improvements
-- 📚 Improve documentation
-- ⭐ Star the repository if you find it helpful!
-
----
 
 ## 📄 License
 
@@ -542,16 +533,6 @@ This project is for educational purposes. Please respect:
 
 ---
 
-## 🎯 Quick Links
-
-- 📖 [Start Here - Deployment Guide](docs/START_HERE_DEPLOYMENT.md)
-- ⚡ [5-Minute Quick Start](docs/QUICK_START_GRADIO.md)
-- 📗 [Complete Deployment Guide](docs/DEPLOY_WITH_H5_MODELS.md)
-- 🎨 [Visual Workflow](docs/VISUAL_WORKFLOW_GUIDE.md)
-- 📔 [Main Notebook](notebooks/03_complete_colab_training_and_app.ipynb)
-
----
-
 ## 🌟 Features at a Glance
 
 | Feature | Description |
@@ -567,40 +548,12 @@ This project is for educational purposes. Please respect:
 
 ---
 
-## 📞 Support & Resources
-
-### Internal Documentation
-- All guides available in `docs/` folder
-- Start with `START_HERE_DEPLOYMENT.md` for overview
-- Use `QUICK_START_GRADIO.md` for quick reference
-- Check `VISUAL_WORKFLOW_GUIDE.md` for diagrams
-
-### External Resources
-- [Gradio Documentation](https://www.gradio.app/docs/)
-- [Google Colab User Guide](https://colab.research.google.com/)
-- [TensorFlow Documentation](https://www.tensorflow.org/)
-- [DenseNet Paper](https://arxiv.org/abs/1608.06993)
-
 ### Getting Help
 1. Check internal documentation first
 2. Review troubleshooting sections
 3. Try restarting Colab runtime
 4. Re-run all cells from the beginning
 5. Verify all file paths and names
-
----
-
-## 🎉 Success Metrics
-
-After following this guide, you should have:
-
-✅ **5-minute deployment time**  
-✅ **Working public Gradio URL**  
-✅ **Accurate disease predictions**  
-✅ **Professional web interface**  
-✅ **Mobile-friendly responsive design**  
-✅ **Easy sharing capability**  
-✅ **Perfect demo for presentations!**
 
 ---
 
@@ -618,8 +571,6 @@ After following this guide, you should have:
 
 **Last Updated**: October 30, 2025  
 **Version**: 2.0 - Gradio Deployment Edition  
-**Status**: 🚀 Ready for GitHub, Demo & Submission!
-
 ---
 
 **⭐ If you find this project helpful, please star the repository!**  
