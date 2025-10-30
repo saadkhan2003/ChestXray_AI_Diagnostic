@@ -1,0 +1,64 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Data files (too large for git)
+data/raw/
+data/processed/
+datasets/*/
+!datasets/README.md
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.npy
+
+# Model files (too large)
+models/*.h5
+models/*.keras
+models/*.pb
+models/*.tflite
+models/saved_model/
+models/*/
+!models/.gitkeep
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment
+.env
+.env.local
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Temporary files
+*.tmp
+temp/
+tmp/
